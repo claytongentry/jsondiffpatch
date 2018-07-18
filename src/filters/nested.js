@@ -145,9 +145,9 @@ export function collectChildrenReverseFilter(context) {
 }
 collectChildrenReverseFilter.filterName = 'collectChildren';
 
-function log({ left, right, delta }, key, side) {
+function log(context, key, side) {
   console.log(`[jsondp warning] attempting to access ${key} from context.${side}`)
-  console.log("left: ", left)
-  console.log("right: ", right)
-  console.log("delta: ", delta)
+  console.log("left: ", context.left)
+  console.log("right: ", context.right)
+  console.log("delta: ", context.delta)
 }
