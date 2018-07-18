@@ -73,6 +73,8 @@ export const patchFilter = function nestedPatchFilter(context) {
   let name;
   let child;
   for (name in context.delta) {
+    if (!context.left)  log(context, name, "left")
+    if (!context.right) log(context, name, "right")
     child = new PatchContext(context.left[name], context.delta[name]);
     context.push(child, name);
   }
@@ -142,3 +144,10 @@ export function collectChildrenReverseFilter(context) {
   context.setResult(delta).exit();
 }
 collectChildrenReverseFilter.filterName = 'collectChildren';
+
+function log({ left, right, delta }, key, side) {
+  console.log(`[jsondp warning] attempting to access ${key} from context.${side}`)
+  console.log("left: ", left)
+  console.log("right: ", right)
+  console.log("delta: ", delta)
+}
