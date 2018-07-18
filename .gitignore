@@ -14,7 +14,7 @@ logs
 results
 coverage
 .nyc_output
-dist
+# dist
 build
 
 npm-debug.log
