@@ -74,7 +74,7 @@ export const patchFilter = function nestedPatchFilter(context) {
   let child;
   for (name in context.delta) {
     if (!context.left)  log(context, name, "left")
-    if (!context.right) log(context, name, "right")
+    if (!context.delta) log(context, name, "delta")
     child = new PatchContext(context.left[name], context.delta[name]);
     context.push(child, name);
   }
