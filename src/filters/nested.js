@@ -72,9 +72,11 @@ export const patchFilter = function nestedPatchFilter(context) {
   }
   let name;
   let child;
-  for (name in context.delta) {
-    child = new PatchContext(context.left[name], context.delta[name]);
-    context.push(child, name);
+  if (context.left) {
+    for (name in context.delta) {
+      child = new PatchContext(context.left[name], context.delta[name]);
+      context.push(child, name);
+    }
   }
   context.exit();
 };
